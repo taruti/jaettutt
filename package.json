@@ -1,0 +1,16 @@
+{
+  "name": "jaettutt",
+  "version": "0.0.0",
+  "description": "jaettutt ========",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taruti/jaettutt.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/taruti/jaettutt/issues"
+  }
+}
