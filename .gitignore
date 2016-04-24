@@ -1,2 +1,4 @@
 *~
 node_modules/
+debug_dist/
+release_dist/
