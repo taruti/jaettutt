@@ -11,7 +11,7 @@ gulp.task('lint', function () {
 });
 
 gulp.task('scripts-dev', function () {
-  return gulp.src('js/*.js7')
+  return gulp.src('js/*.js')
     .pipe(sourcemaps.init())
     .pipe(concat('all.js'))
     .pipe(sourcemaps.write())
