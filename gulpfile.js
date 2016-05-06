@@ -18,8 +18,13 @@ gulp.task('scripts-dev', function () {
     .pipe(gulp.dest('debug_dist'));
 });
 
-gulp.task('watch', function () {
-  gulp.watch('js/*.js', ['lint', 'scripts-dev']);
+gulp.task('html', function () {
+  return gulp.src('html/*.html')
+    .pipe(gulp.dest('debug_dist'));
 });
 
-gulp.task('default', ['lint', 'scripts-dev', 'watch']);
+gulp.task('watch', function () {
+  gulp.watch('js/*.js', ['lint', 'scripts-dev', 'html']);
+});
+
+gulp.task('default', ['lint', 'scripts-dev', 'html', 'watch']);
