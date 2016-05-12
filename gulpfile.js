@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
 var concat = require('gulp-concat');
+var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('lint', function () {
@@ -23,8 +24,14 @@ gulp.task('html', function () {
     .pipe(gulp.dest('debug_dist'));
 });
 
-gulp.task('watch', function () {
-  gulp.watch('js/*.js', ['lint', 'scripts-dev', 'html']);
+gulp.task('sass', function () {
+  return gulp.src('sass/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('debug_dist'));
 });
 
-gulp.task('default', ['lint', 'scripts-dev', 'html', 'watch']);
+gulp.task('watch', function () {
+  gulp.watch('js/*.js', ['lint', 'scripts-dev', 'sass', 'html']);
+});
+
+gulp.task('default', ['lint', 'scripts-dev', 'html', 'sass', 'watch']);
