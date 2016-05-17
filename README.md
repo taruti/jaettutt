@@ -1,4 +1,4 @@
 jaettutt
 ========
 
-Hacky attempt at a virtual table top.
+Hacky attempt at a virtual tabletop.
