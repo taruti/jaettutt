@@ -14,7 +14,7 @@ gulp.task('lint', function () {
 });
 
 gulp.task('scripts-dev', function () {
-  return gulp.src('js/*.js')
+  return gulp.src(['js/*.js', 'ext/*.js'])
     .pipe(sourcemaps.init())
     .pipe(concat('all.js'))
     .pipe(sourcemaps.write())
@@ -44,7 +44,7 @@ gulp.task('browser-sync', ['build', 'watch'], function() {
 gulp.task('build', ['lint', 'scripts-dev', 'sass', 'html'])
 
 gulp.task('watch', function () {
-  gulp.watch('js/*.js', ['scripts-dev']);
+  gulp.watch('js/*.js', ['lint', 'scripts-dev']);
   gulp.watch('sass/*.scss', ['sass']);
   gulp.watch("html/*.html", ['html']);
 });
