@@ -36,7 +36,8 @@ gulp.task('sass', function () {
 gulp.task('browser-sync', ['build', 'watch'], function() {
   browserSync.init({
     server: {
-      baseDir: devOutDir
+      baseDir: devOutDir,
+      online: false
     }
   });
 });
