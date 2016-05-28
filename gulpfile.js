@@ -1,9 +1,10 @@
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
-var concat = require('gulp-concat');
 var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync').create();
+var rollup = require('rollup').rollup;
+
+
 var devOutDir = 'debug_dist';
 
 gulp.task('lint', function () {
@@ -14,11 +15,16 @@ gulp.task('lint', function () {
 });
 
 gulp.task('scripts-dev', function () {
-  return gulp.src(['js/*.js', 'ext/*.js'])
-    .pipe(sourcemaps.init())
-    .pipe(concat('all.js'))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(devOutDir));
+  return rollup({
+    entry: 'js/main.js',
+    plugins: [
+    ]
+  }).then(function (bundle) {
+    return bundle.write({
+      format: 'iife',
+      dest: devOutDir + '/all.js'
+    });
+  });
 });
 
 gulp.task('html', function () {
