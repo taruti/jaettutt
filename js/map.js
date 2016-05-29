@@ -1,4 +1,4 @@
-class Map {
+export default class Map {
   constructor(options) {
     this.scale = options.scale;
   }
@@ -6,7 +6,3 @@ class Map {
   draw() {
   }
 }
-
-export {
-  Map,
-};
