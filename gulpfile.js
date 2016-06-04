@@ -32,6 +32,11 @@ gulp.task('html', function () {
     .pipe(gulp.dest(devOutDir));
 });
 
+gulp.task('ext', function () {
+  return gulp.src('ext/*.js')
+    .pipe(gulp.dest(devOutDir));
+});
+
 gulp.task('sass', function () {
   return gulp.src('sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
@@ -48,7 +53,7 @@ gulp.task('browser-sync', ['build', 'watch'], function() {
   });
 });
 
-gulp.task('build', ['lint', 'scripts-dev', 'sass', 'html'])
+gulp.task('build', ['lint', 'scripts-dev', 'sass', 'html', 'ext'])
 
 gulp.task('watch', function () {
   gulp.watch('js/*.js', ['lint', 'scripts-dev']);
