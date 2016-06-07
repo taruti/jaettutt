@@ -5,26 +5,24 @@ export default class MapView {
     const c = step / 2;
     const a = c / 2;
     const b = Math.sin(60 * Math.PI / 180.0) * c;
-    let even = true;
-    for (let y = 0; y < this.h - step; y += b) {
-      for (let x = even ? 0 : a + c; x < this.w - step; x += step + c) {
-        /*
-        const arr = [x, y + b,
-          x + a, y,
-          x + a + c, y,
-          x + 2 * c, y + b];
-//          x + a + c, y + 2 * b,
-//          x + a, y + 2 * b];
-//        const al = arr.length;
-*/
-        this.graphics.moveTo(x, y + b);
-        this.graphics.lineTo(x + a, y);
-        this.graphics.lineTo(x + a + c, y);
-        this.graphics.lineTo(x + 2 * c, y + b);
-//        this.graphics.moveTo(arr[al - 2], arr[al - 1]);
-//        this.graphics.drawPolygon(arr);
+    function clasp(x, lim) {
+      if (x < 0) { return 0; }
+      if (x > lim) { return lim; }
+      return x;
+    }
+    let odd = false;
+    for (let y = 0; y < this.h; y += b) {
+      if (odd) {
+        this.graphics.moveTo(clasp(0, this.w), clasp(y, this.h));
+        this.graphics.lineTo(clasp(a, this.w), clasp(y + b, this.h));
       }
-      even = !even;
+      for (let x = odd ? a + c : 0; x < this.w; x += step + c) {
+        this.graphics.moveTo(clasp(x, this.w), clasp(y + b, this.h));
+        this.graphics.lineTo(clasp(x + a, this.w), clasp(y, this.h));
+        this.graphics.lineTo(clasp(x + a + c, this.w), clasp(y, this.h));
+        this.graphics.lineTo(clasp(x + 2 * c, this.w), clasp(y + b, this.h));
+      }
+      odd = !odd;
     }
   }
   constructor(map, parent) {
