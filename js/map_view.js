@@ -6,9 +6,7 @@ export default class MapView {
     const a = c / 2;
     const b = Math.sin(60 * Math.PI / 180.0) * c;
     function clasp(x, lim) {
-      if (x < 0) { return 0; }
-      if (x > lim) { return lim; }
-      return x;
+      return x > lim ? lim : x;
     }
     let odd = false;
     for (let y = 0; y < this.h; y += b) {
