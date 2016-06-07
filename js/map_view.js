@@ -1,5 +1,4 @@
 /* global PIXI */
-/* global requestAnimFrame */
 
 export default class MapView {
   constructor(map, parent) {

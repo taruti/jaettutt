@@ -1,7 +1,6 @@
 import Map from './map';
 import MapView from './map_view';
 /* global document */
-/* global window */
 
 function start() {
   const m = new Map({ scale: 1 });
