@@ -44,4 +44,7 @@ export default class Grid {
       odd = !odd;
     }
   }
+  draw() {
+    this.drawSquare();
+  }
 }

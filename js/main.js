@@ -1,10 +1,9 @@
-import Map from './map';
+// import Map from './map';
 import MapView from './map_view';
 /* global document */
 
 function start() {
-  const m = new Map({ scale: 1 });
-  const mv = new MapView(m, document.body);
+  const mv = new MapView(undefined, document.body);
   mv.map.draw();
 }
 
